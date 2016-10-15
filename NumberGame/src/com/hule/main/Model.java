@@ -1,43 +1,35 @@
 package com.hule.main;
 
-import java.awt.Color;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
-import javax.swing.JButton;
-
 public class Model {
-	int Size;
-	int row, col;
-	int[][] boardSize = new int[row][col];
-	
-	int summa;
+	private int Size;
+	private int row, col;
+	private int[][] boardSize;
+	private int summa;
 
 	public Model(int wantedSize) {
 		this.row = wantedSize;
 		this.col = wantedSize;
+		boardSize = new int[row][col];
 
 		for (int r = 0; r < row; r++) {
 			for (int c = 0; c < col; c++) {
-				System.out.println(c);
 				boardSize[r][c] = (int) (Math.random() * 90 + 10);
 
 			}
-
 		}
-
 	}
 
-	public int[][] getBoardSize() {
-		return boardSize;
+	public int BoardSize() {
+		return boardSize.length;
 	}
 
 	public int getNumber(int row, int col) {
-		return row + col;
+		return boardSize[row][col];
 	}
 
 	public void choose(int row, int col) {
-		// Rutan med dessa koordinater väljs som drag
+		boardSize[row][col] = 0;
+
 	}
 	// Tillåtna värden är 1.. boardSize()
 	// sen när modellen ändrats skall View informeras!
@@ -47,15 +39,25 @@ public class Model {
 	}
 
 	public boolean isBlocked(int row, int col) {
-		// Returnerar true om rutan inte är valbar
+		if (boardSize[row][col] == 0) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 
 	public boolean isFree(int row, int col) {
-		// Returnerar true om rutan är valbar
+
+		if (boardSize[row][col] == 1) {
+			return true;
+		} else {
+			return false;
+		}
+
 	}
 
 	public boolean isChoosen(int row, int col) {
-		// Returnerar true om rutan redan är vald
+		return false;
 	}
 
 	public void addObserver(View w) {
