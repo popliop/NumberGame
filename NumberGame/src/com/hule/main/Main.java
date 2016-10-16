@@ -8,15 +8,14 @@ public class Main {
 	}
 
 	public static void intit() {
-		Model model = new Model(2);
+		Model model = new Model(5);
 
-		System.out.println("BoardSize: "+model.BoardSize());
+		System.out.println("BoardSize: " + model.BoardSize());
 
-		System.out.println(model.getNumber(1, 1));
-		System.out.println(model.getNumber(0, 1));
-		
-		View view = new View();
-		Controll controll = new Controll();
+		model.printBoard();
+
+		//View view = new View();
+		//Controll controll = new Controll();
 
 	}
 
