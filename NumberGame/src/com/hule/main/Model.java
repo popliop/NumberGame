@@ -14,7 +14,7 @@ public class Model {
 		this.col = wantedSize;
 
 		createBoard(wantedSize);
-
+		System.out.println();
 	}
 
 	// Methods
