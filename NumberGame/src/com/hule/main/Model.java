@@ -5,25 +5,40 @@ public class Model {
 	// Fields
 	private int row, col;
 	private int[][] boardSize;
+	private boolean[][] blocks;
 	private int summa;
+	boolean isFree = false;
+	private final int iteamSize = 5;
 
 	// Constructor
 
 	public Model(int wantedSize) {
-		this.row = wantedSize;
-		this.col = wantedSize;
+
+		if (wantedSize < 1) {
+			System.err.println("Var lågt val");
+		} else {
+			this.row = wantedSize;
+			this.col = wantedSize;
+		}
 
 		createBoard(wantedSize);
-		System.out.println();
+
 	}
 
 	// Methods
 
+	public int getIteamSize() {
+
+		return iteamSize;
+	}
+
 	public void createBoard(int wantedSize) {
 		boardSize = new int[wantedSize][wantedSize];
+		blocks = new boolean[wantedSize][wantedSize];
 		for (int r = 0; r < row; r++) {
 			for (int c = 0; c < col; c++) {
 				boardSize[r][c] = (int) (Math.random() * 90 + 10);
+				blocks[r][c] = false;
 			}
 		}
 	}
@@ -47,20 +62,22 @@ public class Model {
 	}
 
 	public void choose(int row, int col) {
-		boardSize[row][col] = 0;
 
-		/* do what??
-		 setJbutton enabled 0
-		
-				 
-		 */
+		for (int i = 0; i < boardSize.length; i++) {
+			boardSize[row][i] = 0;
+		}
+
+		for (int i = 0; i < boardSize.length; i++) {
+			boardSize[i][col] = 0;
+		}
+
 	}
 
 	public int getSum() {
 		return summa;
 	}
 
-	public boolean isBlocked(int row, int col) {
+	public boolean isblocked(int row, int col) {
 		if (boardSize[row][col] == 0) {
 			return true;
 		} else {
