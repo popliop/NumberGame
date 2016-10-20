@@ -22,7 +22,6 @@ public class Model {
 		}
 
 		createBoard(wantedSize);
-
 	}
 
 	// Methods
@@ -99,8 +98,8 @@ public class Model {
 		return false;
 	}
 
-	public void addObserver(View w) {
+	//public void addObserver(View w) {
 		// Spara vyn, så vi kan anropa dess update när det är dags.
-	}
+	//}
 
 }
