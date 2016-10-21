@@ -35,13 +35,19 @@ public class View extends JFrame {
 		this.model = model;
 		this.size = model.BoardSize();
 		knapp = new JButton[size][size];
-		
-		
+
 		panGame = new JPanel(new GridLayout(size, size));
 		Container container = getContentPane();
 		container.setLayout(new BorderLayout());
 		container.add(panGame, "Center");
-		
+		setLocationRelativeTo(null);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setResizable(false);
+		skapaKnappar();
+
+	}
+
+	public void skapaKnappar() {
 
 		for (int i = 0; i < size; i++) {
 			for (int j = 0; j < size; j++) {
@@ -58,6 +64,17 @@ public class View extends JFrame {
 
 	public void update() {
 		// få in värden och update spelbordet grafiskt
+		System.out.println("\n Working");
+		
+		for (int i = 0; i < size; i++) {
+			for (int j = 0; j < size; j++) {
+				
+				if (model.isblocked(i, j)){
+					knapp[i][j].setEnabled(false);
+				}
+			}
+		}
+		
 
 	}
 }
