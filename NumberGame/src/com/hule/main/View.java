@@ -23,17 +23,17 @@ public class View extends JFrame {
 	 */
 	private static final long serialVersionUID = 1L;
 	Model model;
-	int size;
+	int size = 5;
 	JFrame frame = new JFrame();
 	int row, col;
 	JButton knapp[][];
 	JPanel panGame;
 
 	public View(Model model) {
-		// Konstruktor och model ska anropa denna metoden n√§r ett drag g√∂rs
+		// Konstruktor och model ska anropa denna metoden n‰r ett drag gˆrs.
 
 		this.model = model;
-		this.size = model.BoardSize();
+		this.size = model.boardSize();
 		knapp = new JButton[size][size];
 
 		panGame = new JPanel(new GridLayout(size, size));
@@ -43,6 +43,7 @@ public class View extends JFrame {
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setResizable(false);
+		setTitle("Number Game");
 		skapaKnappar();
 
 	}
@@ -63,18 +64,17 @@ public class View extends JFrame {
 	}
 
 	public void update() {
-		// f√• in v√§rden och update spelbordet grafiskt
+		// fÂr in v‰rden och update spelbordet grafiskt
 		System.out.println("\n Working");
-		
+
 		for (int i = 0; i < size; i++) {
 			for (int j = 0; j < size; j++) {
-				
-				if (model.isblocked(i, j)){
+
+				if (model.isblocked(i, j)) {
 					knapp[i][j].setEnabled(false);
 				}
 			}
 		}
-		
 
 	}
 }

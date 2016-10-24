@@ -8,16 +8,16 @@ public class Main {
 	}
 
 	public static void intit() {
-		Model model = new Model(5);
+		Model model = new Model(9);
 		View view = new View(model);
 		view.setEnabled(true);
 		view.setVisible(true);
 
-		System.out.println("BoardSize: " + model.BoardSize());
+		System.out.println("BoardSize: " + model.boardSize());
 
 		model.printBoard();
 		System.out.println();
-		System.out.println("varför?");
+		
 		
 
 		

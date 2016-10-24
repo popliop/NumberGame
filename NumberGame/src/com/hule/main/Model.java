@@ -4,7 +4,7 @@ public class Model {
 
 	// Fields
 	private int row, col;
-	private int[][] boardSize;
+	private int[][] spelPlan;
 	private boolean[][] blocks;
 	private int summa;
 	boolean isFree = false;
@@ -32,42 +32,42 @@ public class Model {
 	}
 
 	public void createBoard(int wantedSize) {
-		boardSize = new int[wantedSize][wantedSize];
+		spelPlan = new int[wantedSize][wantedSize];
 		blocks = new boolean[wantedSize][wantedSize];
 		for (int r = 0; r < row; r++) {
 			for (int c = 0; c < col; c++) {
-				boardSize[r][c] = (int) (Math.random() * 90 + 10);
+				spelPlan[r][c] = (int) (Math.random() * 90 + 10);
 				blocks[r][c] = false;
 			}
 		}
 	}
 
-	public int BoardSize() {
-		return boardSize.length;
+	public int boardSize() {
+		return spelPlan.length;
 	}
 
 	public void printBoard() {
 
-		for (int i = 0; i < BoardSize(); i++) {
+		for (int i = 0; i < boardSize(); i++) {
 			System.out.println();
-			for (int j = 0; j < BoardSize(); j++) {
+			for (int j = 0; j < boardSize(); j++) {
 				System.out.print(" " + getNumber(i, j));
 			}
 		}
 	}
 
 	public int getNumber(int row, int col) {
-		return boardSize[row][col];
+		return spelPlan[row][col];
 	}
 
 	public void choose(int row, int col) {
 
-		for (int i = 0; i < boardSize.length; i++) {
-			boardSize[row][i] = 0;
+		for (int i = 0; i < spelPlan.length; i++) {
+			spelPlan[row][i] = 0;
 		}
 
-		for (int i = 0; i < boardSize.length; i++) {
-			boardSize[i][col] = 0;
+		for (int i = 0; i < spelPlan.length; i++) {
+			spelPlan[i][col] = 0;
 		}
 
 	}
@@ -77,7 +77,7 @@ public class Model {
 	}
 
 	public boolean isblocked(int row, int col) {
-		if (boardSize[row][col] == 0) {
+		if (spelPlan[row][col] == 0) {
 			return true;
 		} else {
 			return false;
@@ -86,7 +86,7 @@ public class Model {
 
 	public boolean isFree(int row, int col) {
 
-		if (boardSize[row][col] > 1) {
+		if (spelPlan[row][col] > 1) {
 			return true;
 		} else {
 			return false;
