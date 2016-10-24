@@ -17,6 +17,7 @@ public class Main {
 
 		model.printBoard();
 		System.out.println();
+		System.out.println("varför?");
 		
 
 		
