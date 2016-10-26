@@ -9,13 +9,14 @@ public class Model {
 	private int summa;
 	boolean isFree = false;
 	private final int iteamSize = 5;
+	View w;
 
 	// Constructor
 
 	public Model(int wantedSize) {
 
 		if (wantedSize < 1) {
-			System.err.println("Var lågt val");
+			System.err.println("för lågt val");
 		} else {
 			this.row = wantedSize;
 			this.col = wantedSize;
@@ -62,12 +63,11 @@ public class Model {
 
 	public void choose(int row, int col) {
 
-		for (int i = 0; i < spelPlan.length; i++) {
-			spelPlan[row][i] = 0;
-		}
+		for (int i = 0; i < blocks.length + 1; i++) {
 
-		for (int i = 0; i < spelPlan.length; i++) {
-			spelPlan[i][col] = 0;
+			for (int j = 0; i < spelPlan.length - 1; i++) {
+				blocks[i][j] = true;
+			}
 		}
 
 	}
@@ -77,11 +77,7 @@ public class Model {
 	}
 
 	public boolean isblocked(int row, int col) {
-		if (spelPlan[row][col] == 0) {
-			return true;
-		} else {
-			return false;
-		}
+		return blocks[row][col];
 	}
 
 	public boolean isFree(int row, int col) {
@@ -99,6 +95,7 @@ public class Model {
 	}
 
 	public void addObserver(View w) {
+		this.w = w;
 		w.update();
 	}
 

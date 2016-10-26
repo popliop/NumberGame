@@ -23,6 +23,7 @@ public class View extends JFrame {
 	 */
 	private static final long serialVersionUID = 1L;
 	Model model;
+	Controll cont;
 	int size = 5;
 	JFrame frame = new JFrame();
 	int row, col;
@@ -49,13 +50,15 @@ public class View extends JFrame {
 	}
 
 	public void skapaKnappar() {
-
+		cont = new Controll(model);
 		for (int i = 0; i < size; i++) {
 			for (int j = 0; j < size; j++) {
 				knapp[i][j] = new JButton("" + model.getNumber(i, j));
 				knapp[i][j].setSize(10, 10);
 				knapp[i][j].setEnabled(true);
 				knapp[i][j].setVisible(true);
+				knapp[i][j].addActionListener(cont);
+				knapp[i][j].setActionCommand("" + i + j);
 				panGame.add(knapp[i][j]);
 				pack();
 			}

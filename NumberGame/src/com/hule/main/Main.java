@@ -8,7 +8,7 @@ public class Main {
 	}
 
 	public static void intit() {
-		Model model = new Model(9);
+		Model model = new Model(4);
 		View view = new View(model);
 		view.setEnabled(true);
 		view.setVisible(true);
@@ -21,9 +21,9 @@ public class Main {
 		
 
 		
-		model.choose(3, 3);
+		
 		model.printBoard();
-		model.addObserver(view);
+		
 
 		// Controll controll = new Controll();
 
